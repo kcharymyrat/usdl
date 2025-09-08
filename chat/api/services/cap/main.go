@@ -8,6 +8,7 @@ import (
 	"syscall"
 
 	"github.com/kcharymyrat/usdl/chat/foundation/logger"
+	"github.com/kcharymyrat/usdl/chat/foundation/web"
 )
 
 var build = "develop"
@@ -16,7 +17,7 @@ func main() {
 	var log *logger.Logger
 
 	traceIDFn := func(ctx context.Context) string {
-		return ""
+		return web.GetTraceID(ctx).String()
 	}
 
 	log = logger.New(os.Stdout, logger.LevelInfo, "CAP", traceIDFn)
